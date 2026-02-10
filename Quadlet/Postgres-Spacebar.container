@@ -1,0 +1,40 @@
+# Example unit, probably doesn't know. Just a boilerplate for now.
+
+[Unit]
+Description=PostgreSQL for VoidAuth
+Requires=SpacebarServer.service
+Before=SpaceBarServer.service
+Before=RabbitMQ.service
+
+[Service]
+Restart=on-failure
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=false
+
+[Container]
+# Base
+Image=public.ecr.aws/docker/library/postgres:18.0-bookworm
+ContainerName=postgres-spacebar
+Timezone=Europe/Warsaw
+# Environments
+EnvironmentFile=/home/overseer/Environments/Spacebar/.pgenv
+# Mounts
+Mount=type=bind,src=/home/overseer/Databases/Spacebar,dst=/var/lib/postgresql,U=true,Z
+# Tmpfs
+Tmpfs=/dev/shm
+# Health check
+HealthCmd=["CMD-SHELL", "psql -U $${POSTGRES_USER} -d $${POSTGRES_DB} -c 'SELECT 1' || exit 1"]
+HealthInterval=5s
+HealthRetries=5
+HealthTimeout=5s
+Notify=healthy
+# Labels
+AutoUpdate=registry
+NoNewPrivileges=true
+DropCapability=all
+ReadOnly=true
+# Network
+Network=Spacebar.network
+# User
+User=999:999
+UserNS=auto:size=1000
