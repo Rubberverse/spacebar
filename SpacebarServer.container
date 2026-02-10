@@ -1,0 +1,28 @@
+[Unit]
+Description=Spacebar Server
+
+[Service]
+Restart=on-failure
+SystemCallArchitectures=native
+MemoryDenyWriteExecute=false
+
+[Install]
+WantedBy=default.target
+
+[Container]
+Image=ghcr.io/rubberverse/spacebarchat-server:latest
+ContainerName=spacebar-chat
+# Environment
+EnvironmentFile=/home/overseer/Environments/Spacebar/.env
+# Volumes
+Volume=/home/overseer/Configs/Spacebar:/app/configs:U,Z
+Volume=/home/overseer/Appdata/Spacebar:/app/storage:U,Z
+# Labels
+AutoUpdate=registry
+NoNewPrivileges=true
+DropCapability=all
+# Network
+Network=Spacebar.network
+PublishPort=3001:3001/tcp
+# User
+UserNS=auto:size=1002
