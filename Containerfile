@@ -18,11 +18,9 @@ RUN apt update \
         git \
     && git clone https://github.com/spacebarchat/server.git . \
     && npm i \
-    && npm audit fix \
     && npm run build \
     && npm install mediasoup-spacebar-wrtc --save \
     && npm install pg --save \
-    # This is barely supported but including this anyway for testing purposes.
     && npm install --save sqlite3 --legacy-peer-deps
 
 # Runner
