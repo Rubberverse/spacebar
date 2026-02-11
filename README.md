@@ -4,6 +4,16 @@ This is a testing repository for my own containerized builds of https://github.c
 
 Once ready, this will be updated with instructions. For now, everything put here is boilerplate configuration and is subject to change.
 
+## What I wanna try to make work before I "complete" it
+
+- Podman Quadlet setup for rootless and rootful deployment alike
+- A configuration that works with Caddy
+- Easy production-ready setup that integrates basics (Postgres + Spacebar Server + Fermi)
+- More advanced use-cases (Postgres + Spacebar Server + RabbitMQ + Imagor + Fermi)
+- Friendly documentation for this specific image
+
+insert something else here once it comes to my mind. I've tried making one with `scratch` image but that feat is *very* costly in terms of compute as compiling nodejs statically and having it work afterwards is an insane timesink.
+
 ---
 
 ## 🦆 Rubberverse Container Images
