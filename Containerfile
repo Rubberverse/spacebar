@@ -57,7 +57,7 @@ RUN addgroup \
 COPY    --from=spacebar-builder --chmod=0700 /app/src /app/spacebar
 
 RUN chown -Rf spacebar:spacebar /app \
-    chmod -R 0700 /app \ 
+    && chmod -R 0700 /app \ 
     && ls -la /app
 
 USER    spacebar:spacebar
