@@ -63,4 +63,4 @@ RUN chown -Rf spacebar:spacebar /app \
 USER    spacebar:spacebar
 WORKDIR /app/spacebar
 
-ENTRYPOINT node --enable-source-maps /app/spacebar/dist/bundle/start.js
+ENTRYPOINT node --enable-source-maps dist/bundle/start.js
