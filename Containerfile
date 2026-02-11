@@ -20,8 +20,7 @@ RUN apt update \
     && npm i \
     && npm run build \
     && npm install mediasoup-spacebar-wrtc --save \
-    && npm install pg --save \
-    && npm install --save sqlite3 --legacy-peer-deps
+    && npm install pg --save
 
 # Runner
 FROM    ${IMAGE_REPOSITORY}:${IMAGE_VERSION} AS runner
