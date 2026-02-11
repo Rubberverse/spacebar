@@ -32,7 +32,6 @@ ARG     TARGETOS
 ARG     TARGETARCH
 
 ENV     DEBIAN_FRONTEND="noninteractive" \
-        THREADS="2" \
         PORT="3001" \
         WRTC_WS_PORT="3004" \
         DB_SYNC="false" \
